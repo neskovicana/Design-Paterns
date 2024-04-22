@@ -1,19 +1,21 @@
-package main;
+package print;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class LowerCasePrintStream implements PrintStream {
 	
+	public LowerCasePrintStream() {
+	}
+
 	@Override
 	public void println(String s) {
-		AllLowerCase lc = new AllLowerCase();
-		String result = lc.execute(s);
+		String result = s.toLowerCase();
 		try {
 			FileWriter myWriter = new FileWriter("lowercase_output.txt");
 			myWriter.write(result);
 			myWriter.close();
-			System.out.println("Successfully wrote to the file");
+			System.out.println(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

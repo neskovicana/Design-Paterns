@@ -1,23 +1,26 @@
-package main;
+package print;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class UpperCasePrintStream implements PrintStream {
-
-	private AllUpperCase upperCase;
 	
+	public UpperCasePrintStream() {
+	}
+
 	@Override
 	public void println(String s) {
-		String result = upperCase.execute(s);
+		String result = s.toUpperCase();
 		try {
 			FileWriter myWriter = new FileWriter("uppercase_output.txt");
 			myWriter.write(result);
 			myWriter.close();
-			System.out.println("Successfully wrote to the file");
+			System.out.println(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 }
+
+
